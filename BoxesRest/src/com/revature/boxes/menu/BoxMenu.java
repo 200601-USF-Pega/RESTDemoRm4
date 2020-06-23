@@ -47,7 +47,7 @@ public class BoxMenu {
 					addHeroThread.start();*/
 					
 					// Moved addHero outside of thread.
-					repo.addHero(newHero);
+					repo.addBox(newHero);
 					success = true;
 				} catch (InvalidHealthException ex) {
 					System.out.println("Invalid health level! Please repeat your input");
@@ -59,7 +59,7 @@ public class BoxMenu {
 	}
 	
 	public void getHeros() {
-		List<Box> retrievedHeros = repo.getAllHeros();
+		List<Box> retrievedHeros = repo.getAllBoxes();
 		for(Box hero: retrievedHeros) {
 			System.out.println(hero);
 		}

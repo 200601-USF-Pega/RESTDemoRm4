@@ -17,23 +17,23 @@ import com.revature.boxes.models.Box;
 
 @Path("/boxservice")
 public class BoxService {
-	
+
 	IBoxRepo boxRepo = new BoxRepoDB();
-	
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addBox(Box box) {
 		boxRepo.addBox(box);
 		return Response.status(201).build();
 	}
-	
+
 	@GET
 	@Path("/allboxes")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllBoxes() {
 		return Response.ok((ArrayList<Box>)boxRepo.getAllBoxes()).build();
 	}
-	
+
 	@DELETE
 	@Path("/removeBox")
 	@Consumes(MediaType.APPLICATION_JSON)
