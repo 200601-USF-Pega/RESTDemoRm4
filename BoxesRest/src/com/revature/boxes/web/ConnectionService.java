@@ -13,8 +13,8 @@ public class ConnectionService {
 	public static void initialize() {
 		try  {
 			Class.forName("org.postgresql.Driver");
-			connection = DriverManager.getConnection(MyProps.url, 
-					MyProps.username, MyProps.password);
+			connection = DriverManager.getConnection(MyProp.url, 
+					MyProp.username, MyProp.password);
 			
 		} catch (Exception e) {
 			System.out.println("Exception: " + e.getMessage());
