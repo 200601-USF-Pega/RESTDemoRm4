@@ -62,6 +62,7 @@ public class BoxRepoDB implements IBoxRepo{
 
 			ResultSet rs = s.getResultSet();
 			while (rs.next()) {
+<<<<<<< HEAD
 				Box h = new Box();
 				h.setName(rs.getString("name"));
 				h.setHealthLevel(rs.getInt("healthLevel"));
@@ -81,6 +82,14 @@ public class BoxRepoDB implements IBoxRepo{
 				ArrayList<String> moves = specialMoves.get(hero.getName());
 				if (moves != null) {
 					hero.setSpecialMove(moves.toArray(new String[moves.size()]));
+=======
+				Box tempBox = new Box();
+				tempBox.setLocation(rs.getString("boxLoc"));
+				tempBox.setWeight(rs.getDouble("boxWeight"));
+				tempBox.setID(rs.getInt("boxID"));
+				if (!result.contains(tempBox)) {
+					result.add(tempBox);
+>>>>>>> origin/Danny2
 				}
 			}
 
@@ -95,9 +104,21 @@ public class BoxRepoDB implements IBoxRepo{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public boolean removeBox(Box box) {
 		// TODO Auto-generated method stub
 		return false;
+=======
+	public void removeBox(int boxID) {
+		try {
+			Statement s = ConnectionService.getConnection().createStatement();
+			s.execute("DELETE FROM boxes WHERE boxid = '" + boxID + "';");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("Box not found.");
+>>>>>>> origin/Danny2
 	}
 
 }
