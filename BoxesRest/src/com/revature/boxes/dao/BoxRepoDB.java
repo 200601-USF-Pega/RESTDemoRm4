@@ -54,6 +54,7 @@ public class BoxRepoDB implements IBoxRepo{
 				Box tempBox = new Box();
 				tempBox.setLocation(rs.getString("boxLoc"));
 				tempBox.setWeight(rs.getDouble("boxWeight"));
+				tempBox.setID(rs.getInt("boxID"));
 				if (!result.contains(tempBox)) {
 					result.add(tempBox);
 				}
@@ -68,6 +69,18 @@ public class BoxRepoDB implements IBoxRepo{
 		}
 		
 		return null;
+	}
+
+	@Override
+	public void deleteBox(int boxID) {
+		try {
+			Statement s = ConnectionService.getConnection().createStatement();
+			s.execute("DELETE FROM boxes WHERE boxid = '" + boxID + "';");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("Box not found. Please try again.");
 	}
 
 }
