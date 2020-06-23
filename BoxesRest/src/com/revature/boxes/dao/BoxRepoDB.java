@@ -20,7 +20,7 @@ public class BoxRepoDB implements IBoxRepo{
 		try {
 			
 			
-			PreparedStatement boxStatement = ConnectionService.getConnection().prepareStatement("INSERT INTO boxes VALUES (?, ?)");
+			PreparedStatement boxStatement = ConnectionService.getConnection().prepareStatement("INSERT INTO boxes (boxLoc, boxWeight) VALUES (?, ?)");
 			boxStatement.setString(1, box.getBoxLoc());
 			boxStatement.setDouble(2, box.getBoxWeight());
 			boxStatement.executeUpdate();			
