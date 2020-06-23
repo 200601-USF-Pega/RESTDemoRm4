@@ -80,7 +80,7 @@ public class BoxRepoDB implements IBoxRepo{
 			e.printStackTrace();
 		}
 		
-		System.out.println("Box not found. Please try again.");
+		System.out.println("Box not found.");
 	}
 
 }
