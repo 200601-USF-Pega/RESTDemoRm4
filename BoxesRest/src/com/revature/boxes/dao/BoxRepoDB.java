@@ -17,7 +17,7 @@ import com.revature.boxes.web.ConnectionService;
 public class BoxRepoDB implements IBoxRepo{
 
 	@Override
-	public Box addHero(Box hero) {
+	public Box addBox(Box hero) {
 		// 1. Insert one row with hero's single properties
 		// 2. Insert one row per special move
 		
@@ -48,7 +48,7 @@ public class BoxRepoDB implements IBoxRepo{
 	}
 
 	@Override
-	public List<Box> getAllHeros() {
+	public List<Box> getAllBoxes() {
 		
 		List<Box> result = new ArrayList<Box>();
 		Map<String, ArrayList<String>> specialMoves = new HashMap<String, ArrayList<String>>();
@@ -92,6 +92,12 @@ public class BoxRepoDB implements IBoxRepo{
 		}
 		
 		return null;
+	}
+
+	@Override
+	public boolean removeBox(Box box) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

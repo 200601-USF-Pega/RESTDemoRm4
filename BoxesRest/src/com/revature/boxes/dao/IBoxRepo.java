@@ -4,6 +4,7 @@ import java.util.List;
 import com.revature.boxes.models.Box;
 
 public interface IBoxRepo {
-	public Box addHero(Box hero);
-	public List<Box> getAllHeros();
+	public Box addBox(Box hero);
+	public List<Box> getAllBoxes();
+	public boolean removeBox(Box box);
 }

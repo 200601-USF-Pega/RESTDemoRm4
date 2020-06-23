@@ -17,7 +17,7 @@
 
 	<servlet-mapping>
 		<servlet-name>JerseyContainer</servlet-name>
-		<url-pattern>/heroes/*</url-pattern>
+		<url-pattern>/movingboxes/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>
