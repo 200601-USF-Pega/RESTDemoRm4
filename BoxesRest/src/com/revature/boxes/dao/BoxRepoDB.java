@@ -72,7 +72,7 @@ public class BoxRepoDB implements IBoxRepo{
 	}
 
 	@Override
-	public void deleteBox(int boxID) {
+	public void removeBox(int boxID) {
 		try {
 			Statement s = ConnectionService.getConnection().createStatement();
 			s.execute("DELETE FROM boxes WHERE boxid = '" + boxID + "';");

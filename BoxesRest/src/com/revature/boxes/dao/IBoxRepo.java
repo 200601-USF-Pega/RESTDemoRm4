@@ -6,5 +6,5 @@ import com.revature.boxes.models.Box;
 public interface IBoxRepo {
 	public Box addBox(Box box);
 	public List<Box> getAllBoxes();
-	public void deleteBox(int boxID);
+	public void removeBox(int boxID);
 }
