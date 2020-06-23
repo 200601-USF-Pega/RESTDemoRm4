@@ -66,8 +66,14 @@ public class Box implements Serializable {
 	public void setItems(ArrayList<Item> items) {
 		this.items = items;
 	}
+	
 	public void setItem(Item item) {
 		this.items.add(item);
 	}
+	
+	public void removeItem(String itemName) {
+		this.items.removeIf(item -> item.getItemName().equals(itemName));
+	}
+	
 	
 }
