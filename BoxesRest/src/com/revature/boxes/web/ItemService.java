@@ -11,7 +11,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.revature.boxes.dao.IItemRepo;
+import com.revature.boxes.dao.ItemRepoDB;
 import com.revature.boxes.models.Box;
+import com.revature.boxes.models.Item;
 
 @Path("/itemservice")
 public class ItemService {
@@ -20,8 +23,8 @@ public class ItemService {
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addItem(Item item, Box box) {
-		itemRepo.addItem(item, box);
+	public Response addItem(Item item) {
+		itemRepo.addItem(item);
 		return Response.status(201).build();
 	}
 	
@@ -36,7 +39,7 @@ public class ItemService {
 	@Path("/removeitem")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response removeItem(Item item) {
-		itemRepo.removeItem(item);
+		itemRepo.deleteItem(item.getItemID());
 		return Response.status(201).build();
 	}
 }

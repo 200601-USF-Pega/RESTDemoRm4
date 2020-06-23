@@ -38,7 +38,7 @@ public class BoxService {
 	@Path("/removeBox")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response removeBox(Box box) {
-		boxRepo.removeBox(box);
+		boxRepo.removeBox(box.getBoxID());
 		return Response.status(201).build();
 	}
 }

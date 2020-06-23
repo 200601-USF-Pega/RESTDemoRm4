@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.revature.boxes.models.Box;
+import com.revature.boxes.models.Item;
 import com.revature.boxes.web.ConnectionService;
 
 public class ItemRepoDB implements IItemRepo {
@@ -18,9 +18,9 @@ public class ItemRepoDB implements IItemRepo {
 
 			PreparedStatement itemStatement = ConnectionService.getConnection()
 					.prepareStatement("INSERT INTO items VALUES (?, ?, ?, ?)");
-			itemStatement.setString(1, item.getName());
-			itemStatement.setString(2, item.getDescription());
-			itemStatement.setDouble(3, item.getWeight());
+			itemStatement.setString(1, item.getItemName());
+			itemStatement.setString(2, item.getItemDesc());
+			itemStatement.setDouble(3, item.getItemWeight());
 			itemStatement.setInt(4, item.getBoxID());
 			itemStatement.executeUpdate();
 
@@ -44,12 +44,8 @@ public class ItemRepoDB implements IItemRepo {
 
 			ResultSet rs = s.getResultSet();
 			while (rs.next()) {
-				Item tempItem = new Item();
-				tempItem.setID(rs.getInt("itemID"));
-				tempItem.setName(rs.getString("itemName"));
-				tempItem.setDescription(rs.getString("itemDesc"));
-				tempItem.setWeight(rs.getDouble("itemWeight"));
-				tempItem.setBoxID(rs.getInt("boxID"));
+				Item tempItem = new Item(rs.getInt("itemID"), rs.getString("itemName"),
+						rs.getString("itemDesc"), rs.getDouble("itemWeight"), rs.getInt("boxID"));
 				if (!result.contains(tempItem)) {
 					result.add(tempItem);
 				}
