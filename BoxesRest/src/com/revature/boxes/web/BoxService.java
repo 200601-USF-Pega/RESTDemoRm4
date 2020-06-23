@@ -22,7 +22,7 @@ public class BoxService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addHero(Box hero) {
-		heroRepo.addHero(hero);
+		heroRepo.addBox(hero);
 		return Response.ok().build();
 	}
 	
@@ -30,6 +30,6 @@ public class BoxService {
 	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllHeroes() {
-		return Response.ok((ArrayList<Box>)heroRepo.getAllHeros()).build();
+		return Response.ok((ArrayList<Box>)heroRepo.getAllBoxes()).build();
 	}
 }

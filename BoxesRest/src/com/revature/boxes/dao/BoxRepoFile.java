@@ -14,9 +14,9 @@ public class BoxRepoFile implements IBoxRepo {
 	private String filepath= "src/resources/Hero.txt";
 	//the synchronized keyword makes sure that only one thread can access this method at a time
 	@Override
-	public synchronized Box addHero(Box hero) {
+	public synchronized Box addBox(Box hero) {
 		// TODO Auto-generated method stub
-		List<Box> currentHeros = this.getAllHeros();
+		List<Box> currentHeros = this.getAllBoxes();
 		try {
 			ObjectOutputStream objectOutputStream = 
 					new ObjectOutputStream(new FileOutputStream(filepath));
@@ -33,7 +33,7 @@ public class BoxRepoFile implements IBoxRepo {
 
 	//finish this method
 	@Override
-	public List<Box> getAllHeros() {
+	public List<Box> getAllBoxes() {
 		// TODO Auto-generated method stub
 		try {
 			ObjectInputStream inputStream = 
