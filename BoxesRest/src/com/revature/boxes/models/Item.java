@@ -8,20 +8,54 @@ public class Item implements Serializable {
 	private String itemName;
 	private String itemDesc;
 	private int itemWeight;
-	private Box box;
+	private int boxID;
+	
+	//when item is removed from box it is gone 
+	//we do not have items without boxes
+	
+	//we have to look in a box to know its items ... else add box id to the item pojo
 
 	public Item() {
 
 	}
 	
 	//from db
-	public Item(int itemID, String itemName, String itemDesc, int itemWeight, Box box) {
+	public Item(int itemID, String itemName, String itemDesc, int itemWeight, int boxID) {
 		this.itemID = itemID;
 		this.itemName = itemName;
 		this.itemDesc = itemDesc;
 		this.itemWeight = itemWeight;
-		this.box = box;
+		this.boxID = boxID;
 	}
+	
+	//create
+	//box must be created because we need boxID from db to set it to a box
+	
+	public Item(String itemName, String itemDesc, int itemWeight, int boxID) {
+		this.itemName = itemName;
+		this.itemDesc = itemDesc;
+		this.itemWeight = itemWeight;
+	}
+	
+	//item from db has boxID
+	//box from db has no empty item list //always a join 
+	//assign to box from db
+	
+	//never set box id.. because it must be initialized with a box
+//	public void setBoxID(int boxID) {
+//		this.boxID = boxID;
+//	}
+	
+	public int getBoxID() {
+		return boxID;
+	}
+	
+	//remove from box
+	public void removeFromBox() {
+		this.boxID = (Integer) null;
+	}
+	
+	
 	public int getItemID() {
 		return itemID;
 	}
@@ -47,21 +81,6 @@ public class Item implements Serializable {
 	}
 
 	public void setItemWeight(int itemWeight) {
-		this.itemWeight = itemWeight;
-	}
-
-	public Box getBox() {
-		return box;
-	}
-
-	public void setBox(Box box) {
-		this.box = box;
-	}
-
-	//create
-	public Item(String itemName, String itemDesc, int itemWeight) {
-		this.itemName = itemName;
-		this.itemDesc = itemDesc;
 		this.itemWeight = itemWeight;
 	}
 }

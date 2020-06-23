@@ -9,6 +9,8 @@ public class Box implements Serializable {
 	private String boxLoc;
 	private int boxWeight;
 	private ArrayList<Item> items;
+	
+	//always a join never get item id alone 
 
 	public Box() {
 
@@ -22,18 +24,36 @@ public class Box implements Serializable {
 		this.items = items;
 	}
 	
-	//from db no join
-	public Box(int boxID, String boxLoc, int boxWeight) {
-		this.boxID = boxID;
-		this.boxLoc = boxLoc;
-		this.boxWeight = boxWeight;
-	}
+//	//from db no join
+//	public Box(int boxID, String boxLoc, int boxWeight) {
+//		this.boxID = boxID;
+//		this.boxLoc = boxLoc;
+//		this.boxWeight = boxWeight;
+//	}
 	
 	//create
 	public Box(String boxLoc, int boxWeight) {
 		this.boxLoc = boxLoc;
 		this.boxWeight = boxWeight;
 	}
+	
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(ArrayList<Item> items) {
+		this.items = items;
+	}
+	
+	public void setItem(Item item) {
+		this.items.add(item);
+	}
+	
+	//remove an item from a box after join with boxes
+	public void removeItem(String itemName) {
+		this.items.removeIf(item -> item.getItemName().equals(itemName));
+	}
+	
 
 	public int getBoxID() {
 		return boxID;
@@ -57,23 +77,5 @@ public class Box implements Serializable {
 
 	public void setBoxWeight(int boxWeight) {
 		this.boxWeight = boxWeight;
-	}
-
-	public ArrayList<Item> getItems() {
-		return items;
-	}
-
-	public void setItems(ArrayList<Item> items) {
-		this.items = items;
-	}
-	
-	public void setItem(Item item) {
-		this.items.add(item);
-	}
-	
-	public void removeItem(String itemName) {
-		this.items.removeIf(item -> item.getItemName().equals(itemName));
-	}
-	
-	
+	}	
 }
