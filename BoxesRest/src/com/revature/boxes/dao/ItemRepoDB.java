@@ -17,7 +17,7 @@ public class ItemRepoDB implements IItemRepo {
 		try {
 
 			PreparedStatement itemStatement = ConnectionService.getConnection()
-					.prepareStatement("INSERT INTO items VALUES (?, ?, ?, ?)");
+					.prepareStatement("INSERT INTO items (itemName, itemDesc, itemWeight, boxID) VALUES (?, ?, ?, ?)");
 			itemStatement.setString(1, item.getItemName());
 			itemStatement.setString(2, item.getItemDesc());
 			itemStatement.setDouble(3, item.getItemWeight());
